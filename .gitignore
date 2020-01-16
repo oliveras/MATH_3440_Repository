@@ -1,5 +1,6 @@
-.ipynb_checkpoints
-.tex
-.log
-.aux
--checkpoint.ipynb
+*.ipynb_checkpoints
+*.tex
+*.log
+*.aux
+*checkpoint*
+*.png
