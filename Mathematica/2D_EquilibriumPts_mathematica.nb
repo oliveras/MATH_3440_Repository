@@ -1,0 +1,404 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12179,        396]
+NotebookOptionsPosition[     10864,        346]
+NotebookOutlinePosition[     11235,        362]
+CellTagsIndexPosition[     11192,        359]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[{
+ "Using ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " for 2D Systems"
+}], "Title",
+ CellChangeTimes->{{3.6379594804704456`*^9, 3.637959487250291*^9}, {
+  3.726451279688998*^9, 3.726451283678047*^9}}],
+
+Cell["Finding equilibrium points and their stability", "Subtitle",
+ CellChangeTimes->{{3.637959489529887*^9, 3.637959519222013*^9}, {
+  3.7264512855849085`*^9, 3.72645128751093*^9}}],
+
+Cell["Math 3440 - Winter 2018", "Subsubtitle",
+ CellChangeTimes->{{3.637959521346583*^9, 3.6379595297435036`*^9}, {
+  3.7264511886752415`*^9, 3.7264511968279676`*^9}, {3.7264512755500946`*^9, 
+  3.7264512760529857`*^9}}],
+
+Cell[TextData[{
+ "Consider the system given by  \n\n\t\t\t\t\t",
+ Cell[BoxData[{
+  FormBox[
+   RowBox[{
+    OverscriptBox["M", "."], "=", " ", 
+    RowBox[{"M", "(", 
+     RowBox[{"1", "-", "M", "-", 
+      RowBox[{"n", " ", "N"}]}], ")"}]}], 
+   TraditionalForm], "\[IndentingNewLine]", 
+  FormBox[
+   RowBox[{
+    OverscriptBox["N", "."], "=", " ", 
+    RowBox[{"N", "(", 
+     RowBox[{"1", "-", "N", "-", 
+      RowBox[{"m", " ", "M"}]}], ")"}]}], TraditionalForm]}],
+  FormatType->"TraditionalForm"],
+ " \n\nLet\[CloseCurlyQuote]s determine the equilibrium points and their \
+stability."
+}], "Text",
+ CellChangeTimes->{{3.637959943037762*^9, 3.637959948291495*^9}, {
+  3.637960036689395*^9, 3.637960107751501*^9}, {3.7264512936363916`*^9, 
+  3.726451317534421*^9}, {3.7264514265987577`*^9, 3.726451537267764*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Equilibrium Points", "Section",
+ CellChangeTimes->{{3.637959532260317*^9, 3.6379595471822376`*^9}, {
+  3.637959605844035*^9, 3.6379596076873016`*^9}, {3.726451721260248*^9, 
+  3.7264517232024574`*^9}}],
+
+Cell["\<\
+Define the system (Note: \[OpenCurlyQuote]N\[CloseCurlyQuote] is a protected \
+character in Mathematica so I use MM and NN.\
+\>", "Text",
+ CellChangeTimes->{{3.637959600038903*^9, 3.6379596035563517`*^9}, {
+  3.7264515402408895`*^9, 3.7264515685828953`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "[", 
+   RowBox[{"MM_", ",", "NN_"}], "]"}], "=", " ", 
+  RowBox[{"MM", " ", 
+   RowBox[{"(", " ", 
+    RowBox[{"1", " ", "-", " ", "MM", " ", "-", " ", 
+     RowBox[{"n", " ", "NN"}]}], ")"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"g", "[", 
+   RowBox[{"MM_", ",", "NN_"}], "]"}], "=", 
+  RowBox[{"NN", " ", 
+   RowBox[{"(", " ", 
+    RowBox[{"1", " ", "-", " ", "MM", " ", "-", " ", 
+     RowBox[{"n", " ", "NN"}]}], ")"}]}]}]}], "Input",
+ CellChangeTimes->{{3.6379595598482494`*^9, 3.637959569881407*^9}, {
+  3.7264515708543854`*^9, 3.7264516222233653`*^9}}],
+
+Cell[TextData[{
+ "Determine the fixed points by solving ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"0", " ", "=", " ", 
+     RowBox[{"f", "(", 
+      RowBox[{
+       SuperscriptBox["M", "*"], ",", 
+       SuperscriptBox["N", "*"]}], ")"}]}], ",", " ", 
+    RowBox[{"0", " ", "=", " ", 
+     RowBox[{"g", "(", 
+      RowBox[{
+       SuperscriptBox["M", "*"], ",", 
+       SuperscriptBox["N", "*"]}], ")"}]}]}], TraditionalForm]]]
+}], "Text",
+ CellChangeTimes->{{3.6379595922393*^9, 3.637959631477228*^9}, {
+  3.71785584841251*^9, 3.7178558492260876`*^9}, {3.7264516266768436`*^9, 
+  3.726451666687796*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"eqPts", " ", "=", " ", 
+  RowBox[{"Solve", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"f", "[", 
+        RowBox[{"MM", ",", "NN"}], "]"}], "\[Equal]", "0"}], ",", 
+      RowBox[{
+       RowBox[{"g", "[", 
+        RowBox[{"MM", ",", "NN"}], "]"}], "\[Equal]", "0"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"MM", ",", "NN"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6379596344653625`*^9, 3.637959642315929*^9}, {
+  3.7264516696504807`*^9, 3.7264516941932907`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"MM", "\[Rule]", "0"}], ",", 
+     RowBox[{"NN", "\[Rule]", "1"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"MM", "\[Rule]", 
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{"1", "-", "n"}], 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", 
+         RowBox[{"m", " ", "n"}]}]]}]}], ",", 
+     RowBox[{"NN", "\[Rule]", 
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{"1", "-", "m"}], 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", 
+         RowBox[{"m", " ", "n"}]}]]}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"MM", "\[Rule]", "0"}], ",", 
+     RowBox[{"NN", "\[Rule]", "0"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"MM", "\[Rule]", "1"}], ",", 
+     RowBox[{"NN", "\[Rule]", "0"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6379596428843327`*^9, 3.7178558609193826`*^9, 
+  3.7264516970100985`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Testing the Stability", "Section",
+ CellChangeTimes->{{3.726451749802202*^9, 3.7264517551869183`*^9}}],
+
+Cell[TextData[{
+ "Test the stability of each fixed point by calculating ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"the", " ", "Jacobian"}], TraditionalForm]]],
+ ".  The first things we will do is define the Jacobian as follows:"
+}], "Text",
+ CellChangeTimes->{{3.6379596571494837`*^9, 3.637959690410169*^9}, {
+  3.7264517046088114`*^9, 3.7264517113452277`*^9}, {3.7264517701819687`*^9, 
+  3.726451782954181*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"J", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"D", "[", 
+        RowBox[{
+         RowBox[{"f", "[", 
+          RowBox[{"MM", ",", "NN"}], "]"}], ",", "MM"}], "]"}], ",", 
+       RowBox[{"D", "[", 
+        RowBox[{
+         RowBox[{"f", "[", 
+          RowBox[{"MM", ",", "NN"}], "]"}], ",", "NN"}], "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"D", "[", 
+        RowBox[{
+         RowBox[{"g", "[", 
+          RowBox[{"MM", ",", "NN"}], "]"}], ",", "MM"}], "]"}], ",", 
+       RowBox[{"D", "[", 
+        RowBox[{
+         RowBox[{"g", "[", 
+          RowBox[{"MM", ",", "NN"}], "]"}], ",", "NN"}], "]"}]}], "}"}]}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"J", "//", "MatrixForm"}]}], "Input",
+ CellChangeTimes->{{3.7264517847814827`*^9, 3.7264518340715637`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"1", "-", 
+       RowBox[{"2", " ", "MM"}], "-", 
+       RowBox[{"n", " ", "NN"}]}], 
+      RowBox[{
+       RowBox[{"-", "MM"}], " ", "n"}]},
+     {
+      RowBox[{
+       RowBox[{"-", "m"}], " ", "NN"}], 
+      RowBox[{"1", "-", 
+       RowBox[{"m", " ", "MM"}], "-", 
+       RowBox[{"2", " ", "NN"}]}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.726451834482631*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Now, test the Stability", "Subsubsection",
+ CellChangeTimes->{{3.6379597832481847`*^9, 3.6379598154060507`*^9}, {
+  3.726451839315232*^9, 3.7264518475121183`*^9}}],
+
+Cell["\<\
+The first thing we will do is plug in the equilibrium point into the Jacobian.\
+\>", "Text",
+ CellChangeTimes->{{3.7264519252204485`*^9, 3.7264519606547694`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Apt1", " ", "=", " ", 
+   RowBox[{"FullSimplify", "[", 
+    RowBox[{"J", "/.", 
+     RowBox[{"eqPts", "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Apt1", "//", "MatrixForm"}]}], "Input",
+ CellChangeTimes->{{3.637959693110089*^9, 3.6379597568874197`*^9}, {
+  3.7264518513162975`*^9, 3.726451898526049*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"1", "-", "n"}], "0"},
+     {
+      RowBox[{"-", "m"}], 
+      RowBox[{"-", "1"}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.6379597160073767`*^9, 3.637959725239892*^9}, 
+   3.6379597571996346`*^9, 3.6379598182080593`*^9, 3.7178558632970686`*^9, {
+   3.726451878054637*^9, 3.7264518993916783`*^9}}]
+}, Open  ]],
+
+Cell["Now we will find both the eigenvalues and eigenvectors", "Text",
+ CellChangeTimes->{{3.6379598833153715`*^9, 3.63795993401034*^9}, {
+  3.726451970714991*^9, 3.7264519814382377`*^9}, {3.7264520214592648`*^9, 
+  3.726452024214055*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"eigSysPt1", " ", "=", " ", 
+   RowBox[{"Eigensystem", "[", "Apt1", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"eigSysPt1", "//", "MatrixForm"}]}], "Input",
+ CellChangeTimes->{{3.7264520256645837`*^9, 3.7264520570203247`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"-", "1"}], 
+      RowBox[{"1", "-", "n"}]},
+     {
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1"}], "}"}], 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", 
+         FractionBox[
+          RowBox[{"2", "-", "n"}], "m"]}], ",", "1"}], "}"}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.7264520464754267`*^9, 3.726452057572589*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{958, 998},
+WindowMargins->{{-7, Automatic}, {Automatic, 0}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (July 28, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 224, 7, 246, "Title"],
+Cell[807, 31, 182, 2, 84, "Subtitle"],
+Cell[992, 35, 220, 3, 49, "Subsubtitle"],
+Cell[1215, 40, 817, 22, 198, "Text"],
+Cell[CellGroupData[{
+Cell[2057, 66, 207, 3, 106, "Section"],
+Cell[2267, 71, 268, 5, 74, "Text"],
+Cell[2538, 78, 611, 16, 75, "Input"],
+Cell[3152, 96, 615, 18, 45, "Text"],
+Cell[CellGroupData[{
+Cell[3792, 118, 540, 15, 45, "Input"],
+Cell[4335, 135, 970, 32, 112, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5354, 173, 108, 1, 106, "Section"],
+Cell[5465, 176, 410, 9, 74, "Text"],
+Cell[CellGroupData[{
+Cell[5900, 189, 893, 27, 104, "Input"],
+Cell[6796, 218, 919, 28, 87, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7752, 251, 169, 2, 58, "Subsubsection"],
+Cell[7924, 255, 172, 3, 45, "Text"],
+Cell[CellGroupData[{
+Cell[8121, 262, 392, 9, 75, "Input"],
+Cell[8516, 273, 852, 23, 87, "Output"]
+}, Open  ]],
+Cell[9383, 299, 239, 3, 45, "Text"],
+Cell[CellGroupData[{
+Cell[9647, 306, 267, 5, 75, "Input"],
+Cell[9917, 313, 895, 27, 99, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
