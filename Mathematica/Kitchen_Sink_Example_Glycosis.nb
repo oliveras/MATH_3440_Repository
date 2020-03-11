@@ -1,0 +1,274 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10134,        266]
+NotebookOptionsPosition[      9394,        245]
+NotebookOutlinePosition[      9738,        260]
+CellTagsIndexPosition[      9695,        257]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", "[", 
+    RowBox[{"x_", ",", "y_", ",", "a_"}], "]"}], " ", "=", " ", 
+   RowBox[{
+    RowBox[{"-", "x"}], " ", "+", " ", 
+    RowBox[{"a", " ", "y"}], " ", "+", " ", 
+    RowBox[{
+     SuperscriptBox["x", "2"], "y"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"g", "[", 
+    RowBox[{"x_", ",", "y_", ",", "a_", ",", "b_"}], "]"}], " ", "=", " ", 
+   RowBox[{"b", " ", "-", " ", 
+    RowBox[{"a", " ", "y"}], " ", "-", " ", 
+    RowBox[{
+     SuperscriptBox["x", 
+      RowBox[{"2", " "}]], "y"}]}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7918451736250744`*^9, 3.791845174336999*^9}, {
+  3.791845225095162*^9, 
+  3.791845289435027*^9}},ExpressionUUID->"575405ae-6a8c-45da-a439-\
+8ed6cef1336d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "x"}], "+", 
+  RowBox[{"a", " ", "y"}], "+", 
+  RowBox[{
+   SuperscriptBox["x", "2"], " ", "y"}]}]], "Output",
+ CellChangeTimes->{3.791845285078478*^9},
+ CellLabel->"Out[1]=",ExpressionUUID->"f0a8269a-d2d3-4198-ac89-626b9b5e5221"],
+
+Cell[BoxData[
+ RowBox[{"b", "-", 
+  RowBox[{"a", " ", "y"}], "-", 
+  RowBox[{
+   SuperscriptBox["x", "2"], " ", "y"}]}]], "Output",
+ CellChangeTimes->{3.7918452850937915`*^9},
+ CellLabel->"Out[2]=",ExpressionUUID->"b2f37906-899f-4a0e-985d-e05bac5b78b2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"eqPts", " ", "=", " ", 
+     RowBox[{"NSolve", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"f", "[", 
+           RowBox[{"x", ",", "y", ",", "a"}], "]"}], "\[Equal]", "0"}], ",", 
+         RowBox[{
+          RowBox[{"g", "[", 
+           RowBox[{"x", ",", "y", ",", "a", ",", "b"}], "]"}], "\[Equal]", 
+          "0"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "y"}], "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"pplane", " ", "=", " ", 
+     RowBox[{"StreamPlot", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"f", "[", 
+          RowBox[{"x", ",", "y", ",", "a"}], "]"}], ",", 
+         RowBox[{"g", "[", 
+          RowBox[{"x", ",", "y", ",", "a", ",", "b"}], "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "0", ",", "10"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"y", ",", "0", ",", "3"}], "}"}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"eqPlt", " ", "=", " ", 
+     RowBox[{"ListPlot", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", "y"}], "}"}], "}"}], "/.", "eqPts"}], ",", 
+       RowBox[{"PlotMarkers", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"Black", ",", " ", "Medium"}], "}"}]}]}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"P1", " ", "=", " ", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       FractionBox["x", 
+        RowBox[{"a", "+", 
+         SuperscriptBox["x", "2"]}]], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "0", ",", "3"}], "}"}], ",", 
+       RowBox[{"PlotStyle", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"Red", ",", 
+          RowBox[{"Thickness", "[", "0.011", "]"}]}], "}"}]}]}], "]"}]}], ";",
+     "\[IndentingNewLine]", 
+    RowBox[{"P2", "  ", "=", " ", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       FractionBox["b", 
+        RowBox[{"a", "+", 
+         SuperscriptBox["x", "2"]}]], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "0", ",", "3"}], "}"}], ",", 
+       RowBox[{"PlotStyle", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"Blue", ",", 
+          RowBox[{"Thickness", "[", "0.011", "]"}]}], "}"}]}]}], "]"}]}], ";",
+     "\[IndentingNewLine]", 
+    RowBox[{"P3", " ", "=", " ", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{"Min", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          FractionBox["b", "a"], ",", 
+          RowBox[{
+           RowBox[{"-", "x"}], " ", "+", " ", 
+           RowBox[{"b", 
+            RowBox[{"(", 
+             RowBox[{"1", "+", 
+              FractionBox["1", "a"]}], ")"}]}]}]}], "}"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "0", ",", 
+         RowBox[{"b", 
+          RowBox[{"(", 
+           RowBox[{"1", "+", 
+            FractionBox["1", "a"]}], ")"}]}]}], "}"}], ",", 
+       RowBox[{"PlotStyle", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"Dashed", ",", "Black", ",", 
+          RowBox[{"Thickness", "[", "0.011", "]"}]}], "}"}]}]}], "]"}]}], ";",
+     "\[IndentingNewLine]", 
+    RowBox[{"Show", "[", 
+     RowBox[{"pplane", ",", "eqPlt", ",", "P1", ",", "P2", ",", "P3"}], 
+     "]"}]}], ",", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", 
+     RowBox[{"1", "/", "10"}], ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"b", ",", "1", ",", "3"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7918452913148365`*^9, 3.7918455746784897`*^9}, {
+  3.791845605103217*^9, 3.79184568145971*^9}, {3.7918457278438544`*^9, 
+  3.791845758287298*^9}, {3.791845808056814*^9, 3.7918458870293655`*^9}, {
+  3.7918459561833572`*^9, 
+  3.7918459755007224`*^9}},ExpressionUUID->"fbd6df0b-5409-4124-887d-\
+bc54652a75d5"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 0.1, $CellContext`b$$ = 
+    1.4456000000000002`, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`a$$], 
+      Rational[1, 10], 3}, {
+      Hold[$CellContext`b$$], 
+      Rational[1, 10], 3}}, Typeset`size$$ = {360., {176., 182.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`a$124965$$ = 0, $CellContext`b$124966$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = Rational[1, 10], $CellContext`b$$ = 
+        Rational[1, 10]}, "ControllerVariables" :> {
+        Hold[$CellContext`a$$, $CellContext`a$124965$$, 0], 
+        Hold[$CellContext`b$$, $CellContext`b$124966$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> ($CellContext`eqPts = 
+        NSolve[{$CellContext`f[$CellContext`x, $CellContext`y, \
+$CellContext`a$$] == 
+           0, $CellContext`g[$CellContext`x, $CellContext`y, \
+$CellContext`a$$, $CellContext`b$$] == 
+           0}, {$CellContext`x, $CellContext`y}]; $CellContext`pplane = 
+        StreamPlot[{
+           $CellContext`f[$CellContext`x, $CellContext`y, $CellContext`a$$], 
+           $CellContext`g[$CellContext`x, $CellContext`y, $CellContext`a$$, \
+$CellContext`b$$]}, {$CellContext`x, 0, 3}, {$CellContext`y, 0, 
+           3}]; $CellContext`eqPlt = ListPlot[
+          ReplaceAll[{{$CellContext`x, $CellContext`y}}, $CellContext`eqPts], 
+          PlotMarkers -> {Black, Medium}]; $CellContext`P1 = 
+        Plot[$CellContext`x/($CellContext`a$$ + $CellContext`x^2), \
+{$CellContext`x, 0, 3}, PlotStyle -> {Red, 
+            Thickness[0.011]}]; $CellContext`P2 = 
+        Plot[$CellContext`b$$/($CellContext`a$$ + $CellContext`x^2), \
+{$CellContext`x, 0, 3}, PlotStyle -> {Blue, 
+            Thickness[0.011]}]; $CellContext`P3 = Plot[
+          
+          Min[{$CellContext`b$$/$CellContext`a$$, -$CellContext`x + \
+$CellContext`b$$ (1 + 1/$CellContext`a$$)}], {$CellContext`x, 
+           0, $CellContext`b$$ (1 + 1/$CellContext`a$$)}, 
+          PlotStyle -> {Dashed, Black, 
+            Thickness[0.011]}]; 
+       Show[$CellContext`pplane, $CellContext`eqPlt, $CellContext`P1, \
+$CellContext`P2, $CellContext`P3]), "Specifications" :> {{$CellContext`a$$, 
+         Rational[1, 10], 3}, {$CellContext`b$$, 
+         Rational[1, 10], 3}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{411., {237., 243.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.7918453581950073`*^9, 3.79184538602514*^9}, {
+   3.7918454307205706`*^9, 3.7918455174203777`*^9}, {3.7918455491101136`*^9, 
+   3.791845575602104*^9}, {3.7918456380286784`*^9, 3.7918456819129434`*^9}, 
+   3.791845736402088*^9, 3.7918458518321514`*^9, 3.791845887475192*^9},
+ CellLabel->"Out[22]=",ExpressionUUID->"8bdb2844-1799-4aaf-93d2-009d2632716f"]
+}, Open  ]]
+},
+WindowSize->{759, 813},
+WindowMargins->{{Automatic, 612}, {185, Automatic}},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 773, 22, 48, "Input",ExpressionUUID->"575405ae-6a8c-45da-a439-8ed6cef1336d"],
+Cell[1356, 46, 269, 7, 32, "Output",ExpressionUUID->"f0a8269a-d2d3-4198-ac89-626b9b5e5221"],
+Cell[1628, 55, 253, 6, 32, "Output",ExpressionUUID->"b2f37906-899f-4a0e-985d-e05bac5b78b2"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1918, 66, 3823, 106, 265, "Input",ExpressionUUID->"fbd6df0b-5409-4124-887d-bc54652a75d5"],
+Cell[5744, 174, 3634, 68, 499, "Output",ExpressionUUID->"8bdb2844-1799-4aaf-93d2-009d2632716f"]
+}, Open  ]]
+}
+]
+*)
+
