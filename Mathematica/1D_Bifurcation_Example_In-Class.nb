@@ -1,0 +1,749 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     29918,        741]
+NotebookOptionsPosition[     27589,        694]
+NotebookOutlinePosition[     28017,        711]
+CellTagsIndexPosition[     27974,        708]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Bifurcation Diagrams - 1D ODEs", "Title",
+ CellChangeTimes->{{3.725293269683507*^9, 
+  3.7252932775162992`*^9}},ExpressionUUID->"d004e843-3e58-4f28-8474-\
+82a76376bcb6"],
+
+Cell["Nonlinear Systems and Modeling", "Subtitle",
+ CellChangeTimes->{{3.7252932825709276`*^9, 
+  3.725293288715129*^9}},ExpressionUUID->"bed3d987-7da0-459b-8f12-\
+b5b268edd2f6"],
+
+Cell["Katie Oliveras", "Subsubtitle",
+ CellChangeTimes->{{3.7252932910718126`*^9, 
+  3.7252932926165953`*^9}},ExpressionUUID->"dbdf85ae-1bce-46ce-8d92-\
+14f1c73182fc"],
+
+Cell[CellGroupData[{
+
+Cell["Preliminaries", "Section",
+ CellChangeTimes->{{3.725293305458977*^9, 
+  3.725293307149424*^9}},ExpressionUUID->"ac1713ba-090e-4670-9695-\
+94b817a7ada4"],
+
+Cell[TextData[{
+ "Let\[CloseCurlyQuote]s assume that you want to examine the bifurcation \
+diagram associated with the differential equation ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[Association["boxes" -> FormBox[
+       RowBox[{
+         OverscriptBox[
+          StyleBox["x", "TI"], "."], "\[LongEqual]", 
+         StyleBox["f", "TI"], 
+         RowBox[{"(", 
+           RowBox[{
+             StyleBox["x", "TI"], ";", 
+             StyleBox["a", "TI"]}], ")"}]}], TraditionalForm], "errors" -> {},
+      "input" -> "\\dot{x} = f(x;a)", "state" -> "Boxes"],
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "baa40e6e-aef7-4a1b-9a5e-c0ec5186665a"],
+ " where ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[Association["boxes" -> FormBox[
+       StyleBox["a", "TI"], TraditionalForm], "errors" -> {}, "input" -> "a", 
+     "state" -> "Boxes"],
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "0db8c23c-60a0-44df-bd0f-8a2ef47fea70"],
+ " is a real-valued parameter/constant.   For this example, let\
+\[CloseCurlyQuote]s consider the differential equation where we have ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[Association["boxes" -> FormBox[
+       RowBox[{
+         OverscriptBox[
+          StyleBox["x", "TI"], "."], "\[LongEqual]", 
+         RowBox[{
+           SuperscriptBox[
+            StyleBox["x", "TI"], "3"], "-", 
+           StyleBox["a", "TI"], 
+           StyleBox["x", "TI"]}]}], TraditionalForm], "errors" -> {}, "input" -> 
+     "\\dot{x} = {x^3 - ax}", "state" -> "Boxes"],
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "2ef4e06e-e7e2-4983-8982-f9b68edc8295"],
+ ".  First, we want to define the function ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[Association["boxes" -> FormBox[
+       RowBox[{
+         StyleBox["f", "TI"], 
+         RowBox[{"(", 
+           RowBox[{
+             StyleBox["x", "TI"], ";", 
+             StyleBox["a", "TI"]}], ")"}], "\[LongEqual]", 
+         SuperscriptBox[
+          StyleBox["x", "TI"], "3"], "-", 
+         StyleBox["a", "TI"], 
+         StyleBox["x", "TI"]}], TraditionalForm], "errors" -> {}, "input" -> 
+     "f(x;a) = x^3-ax", "state" -> "Boxes"],
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "2c0c2789-1a5a-4f8b-856f-31aab1a6331f"],
+ " so that we can examine the equilibrium points. "
+}], "Text",
+ CellFrame->1,
+ CellChangeTimes->{{3.725376320039624*^9, 3.725376353324794*^9}, {
+  3.92134169488428*^9, 3.92134169488428*^9}, {3.921341725063923*^9, 
+  3.9213417506522913`*^9}, {3.9213417954552917`*^9, 3.9213419483267136`*^9}, {
+  3.921342207925889*^9, 3.921342279170641*^9}, {3.921342386058543*^9, 
+  3.9213423941662307`*^9}, {3.9213424271628714`*^9, 3.9213424631713943`*^9}},
+ Background->RGBColor[
+  1, 1, 0.85],ExpressionUUID->"b1e3d151-c5f1-46a7-b327-0f52292cfdca"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"f", "[", 
+   RowBox[{"x_", ",", "a_"}], "]"}], " ", "=", " ", 
+  RowBox[{
+   SuperscriptBox["x", "3"], "-", 
+   RowBox[{"a", " ", "x"}]}]}]], "Input",
+ CellChangeTimes->{{3.725290083082701*^9, 3.725290095571597*^9}, {
+  3.725290224474331*^9, 3.725290227017584*^9}, {3.9213425251426997`*^9, 
+  3.921342533871324*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"3d8c8bb1-9e59-4cd1-b6fb-6102b005675c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"-", "a"}], " ", "x"}], "+", 
+  SuperscriptBox["x", "3"]}]], "Output",
+ CellChangeTimes->{3.9213436789573364`*^9, 3.922373867871545*^9},
+ CellLabel->"Out[17]=",ExpressionUUID->"e2736119-25ea-456c-800c-80c16a68c6ef"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Next, let\[CloseCurlyQuote]s solve for the equilibrium points by having \
+Mathematica solve the equation ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[Association["boxes" -> FormBox[
+       RowBox[{
+         OverscriptBox[
+          StyleBox["x", "TI"], "."], "\[LongEqual]", "0  ", "\[Rule]  ", 
+         StyleBox["f", "TI"], 
+         RowBox[{"(", 
+           RowBox[{
+             StyleBox["x", "TI"], ";", 
+             StyleBox["a", "TI"]}], ")"}], "\[LongEqual]", "0"}], 
+       TraditionalForm], "errors" -> {}, "input" -> 
+     "\\dot{x} = 0 \\quad \\to \\quad f(x;a) = 0", "state" -> "Boxes"],
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "67766430-36d7-4661-858a-bfc4c45e6792"],
+ ".  The command below solves the equation ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[Association["boxes" -> FormBox[
+       RowBox[{
+         StyleBox["f", "TI"], 
+         RowBox[{"(", 
+           RowBox[{
+             StyleBox["x", "TI"], ";", 
+             StyleBox["a", "TI"]}], ")"}], "\[LongEqual]", "0"}], 
+       TraditionalForm], "errors" -> {}, "input" -> "f(x;a) = 0", "state" -> 
+     "Boxes"],
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "ec7e4bfa-b687-40e3-be45-45b77ab7e564"],
+ " for ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[Association["boxes" -> FormBox[
+       StyleBox["x", "TI"], TraditionalForm], "errors" -> {}, "input" -> "x", 
+     "state" -> "Boxes"],
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "afadea86-0a54-4fec-9870-d3f9349ce8f4"],
+ " and returns a list of solutions."
+}], "Text",
+ CellFrame->1,
+ CellChangeTimes->{{3.725376320039624*^9, 3.725376353324794*^9}, {
+  3.92134169488428*^9, 3.92134169488428*^9}, {3.921341725063923*^9, 
+  3.9213417506522913`*^9}, {3.9213417954552917`*^9, 3.9213419483267136`*^9}, {
+  3.921342207925889*^9, 3.921342279170641*^9}, {3.921342386058543*^9, 
+  3.9213423941662307`*^9}, {3.9213424271628714`*^9, 3.9213425571914997`*^9}, {
+  3.9213426295335712`*^9, 3.9213426747305226`*^9}},
+ Background->RGBColor[
+  1, 1, 0.85],ExpressionUUID->"d060127e-f2fa-41ad-83e5-3bcb295c25af"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"eqPts", "[", "a_", "]"}], " ", "=", " ", 
+  RowBox[{"Solve", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"f", "[", 
+      RowBox[{"x", ",", "a"}], "]"}], "\[Equal]", "0"}], ",", "x"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.725290183423658*^9, 3.7252901931621513`*^9}, {
+  3.7252902307498574`*^9, 3.7252902315381584`*^9}, {3.7252906494896116`*^9, 
+  3.7252906532462645`*^9}, {3.725376359059412*^9, 3.7253763603228087`*^9}, {
+  3.9213426801728945`*^9, 3.9213426867152224`*^9}, {3.921343142145979*^9, 
+  3.9213431421808605`*^9}, {3.92134325591507*^9, 3.921343256933646*^9}},
+ CellLabel->"In[18]:=",ExpressionUUID->"29b47f3f-780e-49ea-97b0-ee4ac24b61b6"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"x", "\[Rule]", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", "\[Rule]", 
+     RowBox[{"-", 
+      SqrtBox["a"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", "\[Rule]", 
+     SqrtBox["a"]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.7252901941200724`*^9, 3.725290232680225*^9, {3.725290654729336*^9, 
+   3.725290667430752*^9}, 3.725376369096078*^9, 3.725376432164071*^9, 
+   3.9213209826315613`*^9, 3.9213426874413404`*^9, 3.921342946353265*^9, 
+   3.9213431426029444`*^9, 3.921343258536398*^9, 3.921343680096819*^9, 
+   3.9223738706937094`*^9},
+ CellLabel->"Out[18]=",ExpressionUUID->"e40019a5-a798-4156-8205-7b8281d82f05"]
+}, Open  ]],
+
+Cell[TextData[{
+ "Now that we know the equilibrium points, we would like to investigate the \
+phase line and solution curves as a function of the parameter ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[Association["boxes" -> FormBox[
+       StyleBox["a", "TI"], TraditionalForm], "errors" -> {}, "input" -> "a", 
+     "state" -> "Boxes"],
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "dd8edaae-f197-4943-843d-c3a8beb14556"],
+ ".  The following in a simple way to plot the functions for yourself and see \
+how the phase line changes using the MANIPULATE command"
+}], "Text",
+ CellFrame->1,
+ CellChangeTimes->{{3.725376320039624*^9, 3.725376353324794*^9}, {
+  3.92134169488428*^9, 3.92134169488428*^9}, {3.921341725063923*^9, 
+  3.9213417506522913`*^9}, {3.9213417954552917`*^9, 3.9213419483267136`*^9}, {
+  3.921342207925889*^9, 3.921342279170641*^9}, {3.921342386058543*^9, 
+  3.9213423941662307`*^9}, {3.9213424271628714`*^9, 3.9213425571914997`*^9}, {
+  3.9213426295335712`*^9, 3.9213427401459723`*^9}, {3.921345130244379*^9, 
+  3.921345158477378*^9}},
+ Background->RGBColor[
+  1, 1, 0.85],ExpressionUUID->"97e4639b-430d-4c0c-b489-80da4f67b2fa"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Show", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Plot", "[", 
+       RowBox[{
+        RowBox[{"f", "[", 
+         RowBox[{"x", ",", "a"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", 
+          RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+        RowBox[{"PlotStyle", "->", 
+         RowBox[{"{", 
+          RowBox[{"Black", ",", "Thick"}], "}"}]}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ListPlot", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"x", ",", "0"}], "}"}], "/.", 
+         RowBox[{"eqPts", "[", "a", "]"}]}], ",", 
+        RowBox[{"PlotStyle", "->", 
+         RowBox[{"{", 
+          RowBox[{"Red", ",", 
+           RowBox[{"PointSize", "[", "Large", "]"}]}], "}"}]}]}], "]"}]}], 
+     "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"a", ",", 
+      RowBox[{"-", "2"}], ",", "2"}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.921345159772817*^9, 3.9213453001808567`*^9}, {
+  3.9213456535248003`*^9, 3.921345659191257*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"75aa0394-5782-4d02-b789-c481557b6276"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = -2, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`a$$], -2, 2}}, Typeset`size$$ = {630., {190., 200.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`a$$ = -2}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[
+        Plot[
+         $CellContext`f[$CellContext`x, $CellContext`a$$], {$CellContext`x, \
+-2, 2}, PlotStyle -> {Black, Thick}], 
+        ListPlot[
+         ReplaceAll[{$CellContext`x, 0}, 
+          $CellContext`eqPts[$CellContext`a$$]], PlotStyle -> {Red, 
+           PointSize[Large]}]], 
+      "Specifications" :> {{$CellContext`a$$, -2, 2}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{714., {265., 275.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.921345271370742*^9, 3.92134530059122*^9}, 
+   3.921345659606867*^9, 3.9223738724541616`*^9},
+ CellLabel->"Out[19]=",ExpressionUUID->"bb95169d-feda-4604-97f3-de187d8d07b3"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["General Code To Display Side-by-Side-by-Side", "Section",
+ CellChangeTimes->{{3.9213453062207365`*^9, 
+  3.92134533929453*^9}},ExpressionUUID->"85770f4c-f877-4a76-8c6e-\
+17f396011b2e"],
+
+Cell[TextData[{
+ "The following code allows your to sketch the Phase Lines, the Bifurcation \
+Diagram, and the Solution Curves for a differential equation of the form ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[Association["boxes" -> FormBox[
+       RowBox[{
+         OverscriptBox[
+          StyleBox["x", "TI"], "."], "\[LongEqual]", 
+         StyleBox["f", "TI"], 
+         RowBox[{"(", 
+           RowBox[{
+             StyleBox["x", "TI"], ";", 
+             StyleBox["a", "TI"]}], ")"}]}], TraditionalForm], "errors" -> {},
+      "input" -> "\\dot{x} = f(x;a)", "state" -> "Boxes"],
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "7496275b-4297-4e07-bc95-a02d5188108a"],
+ " where you have created the functions ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[Association["boxes" -> FormBox[
+       RowBox[{
+         StyleBox["f", "MR"], 
+         RowBox[{"[", 
+           RowBox[{
+             StyleBox["x", "MR"], "_", ",", 
+             StyleBox["a", "MR"], "_"}], "]"}]}], TraditionalForm], 
+     "errors" -> {}, "input" -> "\\texttt{f[x\\_, a\\_]}", "state" -> "Boxes"],
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "79721764-57b7-4dfc-b108-7a43a6ec6923"],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[Association["boxes" -> FormBox[
+       RowBox[{
+         StyleBox["eqPts", "MR"], 
+         RowBox[{"[", 
+           RowBox[{
+             StyleBox["a", "MR"], "_"}], "]"}]}], TraditionalForm], 
+     "errors" -> {}, "input" -> "\\texttt{eqPts[a\\_]}", "state" -> "Boxes"],
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "6bb68204-713d-4bae-9554-dacc4647bb25"]
+}], "Text",
+ CellFrame->1,
+ CellChangeTimes->{{3.725376320039624*^9, 3.725376353324794*^9}, {
+  3.92134169488428*^9, 3.92134169488428*^9}, {3.921341725063923*^9, 
+  3.9213417506522913`*^9}, {3.9213417954552917`*^9, 3.9213419483267136`*^9}, {
+  3.921342207925889*^9, 3.921342279170641*^9}, {3.921342386058543*^9, 
+  3.9213423941662307`*^9}, {3.9213424271628714`*^9, 3.9213425571914997`*^9}, {
+  3.9213426295335712`*^9, 3.9213427401459723`*^9}, {3.921345130244379*^9, 
+  3.921345158477378*^9}, {3.921345349211715*^9, 3.921345430932661*^9}},
+ Background->RGBColor[
+  1, 1, 0.85],ExpressionUUID->"d70a93d1-92e7-4988-9989-102eae4d91d6"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"PhaseLinePlot", "[", "a_", "]"}], " ", ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"eqPoints", " ", "=", " ", 
+         RowBox[{"eqPts", "[", "a", "]"}]}], ",", "p1", ",", "p2"}], "}"}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"p1", " ", "=", " ", 
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          RowBox[{"f", "[", 
+           RowBox[{"x", ",", "a"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", 
+            RowBox[{"-", "2"}], ",", "2"}], "}"}], ",", 
+          RowBox[{"ImageSize", "->", "300"}], ",", 
+          RowBox[{"PlotRange", "->", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"-", "1.5"}], ",", "1.5"}], "}"}]}], ",", 
+          RowBox[{"PlotStyle", "->", 
+           RowBox[{"{", 
+            RowBox[{"Black", ",", " ", "Thick"}], "}"}]}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"p2", " ", "=", " ", 
+        RowBox[{"ListPlot", "[", 
+         RowBox[{
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"x", "/.", 
+               RowBox[{"eqPoints", "[", 
+                RowBox[{"[", "j", "]"}], "]"}]}], ",", "0"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"j", ",", "1", ",", 
+              RowBox[{"Length", "[", "eqPoints", "]"}]}], "}"}]}], "]"}], ",", 
+          RowBox[{"PlotStyle", "->", 
+           RowBox[{"{", 
+            RowBox[{"Red", ",", 
+             RowBox[{"PointSize", "[", "Large", "]"}]}], "}"}]}]}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"Show", "[", 
+        RowBox[{"p1", ",", "p2"}], "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"BifurcationPlot", "[", "\[Alpha]_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", " ", 
+       RowBox[{
+       "plotStable", ",", "plotUnstable", ",", "eqPtPlot", ",", "condition"}],
+        "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"j", "=", "1"}], ",", 
+         RowBox[{"j", "\[LessEqual]", 
+          RowBox[{"Length", "[", 
+           RowBox[{"eqPts", "[", "a", "]"}], "]"}]}], ",", 
+         RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
+           SubscriptBox["condition", "j"], "=", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"D", "[", 
+               RowBox[{
+                RowBox[{"f", "[", 
+                 RowBox[{"x", ",", "a"}], "]"}], ",", "x"}], "]"}], "/.", 
+              RowBox[{
+               RowBox[{"eqPts", "[", "a", "]"}], "[", 
+               RowBox[{"[", "j", "]"}], "]"}]}], ")"}], ">", "0"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           SubscriptBox["plotStable", "j"], " ", "=", " ", 
+           RowBox[{"Plot", "[", 
+            RowBox[{
+             RowBox[{"If", "[", 
+              RowBox[{
+               SubscriptBox["condition", "j"], ",", 
+               RowBox[{"x", "/.", 
+                RowBox[{
+                 RowBox[{"eqPts", "[", "a", "]"}], "[", 
+                 RowBox[{"[", "j", "]"}], "]"}]}]}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"a", ",", 
+               RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+             RowBox[{"PlotStyle", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{"Black", ",", "Dashed", ",", "Thick"}], "}"}]}]}], 
+            "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{
+           SubscriptBox["plotUnstable", "j"], "=", 
+           RowBox[{"Plot", "[", 
+            RowBox[{
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"Not", "[", 
+                SubscriptBox["condition", "j"], "]"}], ",", 
+               RowBox[{"x", "/.", 
+                RowBox[{
+                 RowBox[{"eqPts", "[", "a", "]"}], "[", 
+                 RowBox[{"[", "j", "]"}], "]"}]}]}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"a", ",", 
+               RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+             RowBox[{"PlotStyle", "\[Rule]", 
+              RowBox[{"{", 
+               RowBox[{"Black", ",", "Thick"}], "}"}]}]}], "]"}]}]}]}], "]"}],
+        ";", "\[IndentingNewLine]", 
+       RowBox[{"eqPtPlot", " ", "=", " ", 
+        RowBox[{"ListPlot", "[", 
+         RowBox[{
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"\[Alpha]", ",", 
+              RowBox[{"x", "/.", 
+               RowBox[{
+                RowBox[{"eqPts", "[", "\[Alpha]", "]"}], "[", 
+                RowBox[{"[", "j", "]"}], "]"}]}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"j", ",", "1", ",", 
+              RowBox[{"Length", "[", 
+               RowBox[{"eqPts", "[", "\[Alpha]", "]"}], "]"}]}], "}"}]}], 
+           "]"}], ",", 
+          RowBox[{"PlotStyle", "->", 
+           RowBox[{"{", 
+            RowBox[{"Red", ",", 
+             RowBox[{"PointSize", "[", "Large", "]"}]}], "}"}]}]}], "]"}]}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"Show", "[", 
+        RowBox[{
+         RowBox[{"Flatten", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                SubscriptBox["plotStable", "j"], ",", 
+                SubscriptBox["plotUnstable", "j"]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"j", ",", "1", ",", 
+                RowBox[{"Length", "[", 
+                 RowBox[{"eqPts", "[", "a", "]"}], "]"}]}], "}"}]}], "]"}], 
+            ",", "eqPtPlot"}], "}"}], "]"}], ",", 
+         RowBox[{"PlotRange", "\[Rule]", "All"}], ",", 
+         RowBox[{"ImageSize", "->", "300"}]}], "]"}]}]}], 
+     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"SolutionPlot", "[", "\[Alpha]_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"p1", ",", "p2"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"p1", " ", "=", " ", 
+        RowBox[{"StreamPlot", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"t", ",", 
+            RowBox[{"f", "[", 
+             RowBox[{"x", ",", "\[Alpha]"}], "]"}]}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"t", ",", "0", ",", "10"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"x", ",", 
+            RowBox[{"-", "1.5"}], ",", "1.5"}], "}"}], ",", 
+          RowBox[{"ImageSize", "->", "300"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"p2", " ", "=", " ", 
+        RowBox[{"Plot", "[", 
+         RowBox[{
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"x", "/.", 
+             RowBox[{
+              RowBox[{"eqPts", "[", "\[Alpha]", "]"}], "[", 
+              RowBox[{"[", "j", "]"}], "]"}]}], ",", 
+            RowBox[{"{", 
+             RowBox[{"j", ",", "1", ",", 
+              RowBox[{"Length", "[", 
+               RowBox[{"eqPts", "[", "\[Alpha]", "]"}], "]"}]}], "}"}]}], 
+           "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"t", ",", "0", ",", "10"}], "}"}], ",", " ", 
+          RowBox[{"PlotStyle", "->", 
+           RowBox[{"{", 
+            RowBox[{"Black", ",", " ", "Dashed", ",", "Thick"}], "}"}]}]}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Show", "[", 
+        RowBox[{"p1", ",", "p2"}], "]"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"allPlots", "[", "\[Alpha]_", "]"}], ":=", 
+    RowBox[{"Row", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"PhaseLinePlot", "[", "\[Alpha]", "]"}], ",", 
+       RowBox[{"BifurcationPlot", "[", "\[Alpha]", "]"}], ",", 
+       RowBox[{"SolutionPlot", "[", "\[Alpha]", "]"}]}], "}"}], "]"}]}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.9213427426368217`*^9, 3.9213429264818892`*^9}, {
+  3.921342959134366*^9, 3.9213430364638853`*^9}, {3.921343106370501*^9, 
+  3.921343289222124*^9}, {3.9213437075262737`*^9, 3.9213438054951224`*^9}, {
+  3.921343912609883*^9, 3.9213439146853447`*^9}, {3.9213440618638687`*^9, 
+  3.9213440850484533`*^9}, {3.921344150937867*^9, 3.9213442673183036`*^9}, {
+  3.9213443000743294`*^9, 3.9213445830652485`*^9}, {3.92134463192651*^9, 
+  3.9213450930953426`*^9}, {3.9213455154691195`*^9, 3.921345591065344*^9}, {
+  3.9223738999901695`*^9, 3.9223739043761625`*^9}},
+ CellLabel->"In[29]:=",ExpressionUUID->"41fa18e8-c50f-4cda-ad08-6a206e8ffa90"],
+
+Cell[TextData[{
+ "To call the code, simply use the ",
+ Cell[BoxData[
+  FormBox[
+   TemplateBox[Association["boxes" -> FormBox[
+       StyleBox["Manipulate", "MR"], TraditionalForm], "errors" -> {}, 
+     "input" -> "\\texttt{Manipulate}", "state" -> "Boxes"],
+    "TeXAssistantTemplate"], TraditionalForm]],ExpressionUUID->
+  "fd0d5d65-5d6c-43f4-bc14-1b3c2b34ca85"],
+ " command as shown below:"
+}], "Text",
+ CellFrame->1,
+ CellChangeTimes->{{3.725376320039624*^9, 3.725376353324794*^9}, {
+  3.92134169488428*^9, 3.92134169488428*^9}, {3.921341725063923*^9, 
+  3.9213417506522913`*^9}, {3.9213417954552917`*^9, 3.9213419483267136`*^9}, {
+  3.921342207925889*^9, 3.921342279170641*^9}, {3.921342386058543*^9, 
+  3.9213423941662307`*^9}, {3.9213424271628714`*^9, 3.9213425571914997`*^9}, {
+  3.9213426295335712`*^9, 3.9213427401459723`*^9}, {3.921345130244379*^9, 
+  3.921345158477378*^9}, {3.921345349211715*^9, 3.921345430932661*^9}, {
+  3.921345509456069*^9, 3.921345512337345*^9}, {3.9213455661535077`*^9, 
+  3.9213455668609333`*^9}, {3.9213455989442453`*^9, 3.921345616325349*^9}},
+ Background->RGBColor[
+  1, 1, 0.85],ExpressionUUID->"1b69546e-f73c-48c5-a99b-86d1369ecb05"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"allPlots", "[", "\[Alpha]", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Alpha]", ",", 
+     RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.921345533403959*^9, 3.9213455392973795`*^9}},
+ CellLabel->"In[24]:=",ExpressionUUID->"30cc6e5c-8a0a-438c-9c2d-31346123af05"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`\[Alpha]$$ = 0.30400000000000005`, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`\[Alpha]$$], -1, 1}}, Typeset`size$$ = {
+    1575., {250., 260.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`\[Alpha]$$ = -1}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> $CellContext`allPlots[$CellContext`\[Alpha]$$], 
+      "Specifications" :> {{$CellContext`\[Alpha]$$, -1, 1}}, "Options" :> {},
+       "DefaultOptions" :> {}],
+     ImageSizeCache->{1659., {325., 335.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.9213442684689293`*^9, {3.921344316226604*^9, 3.921344391830809*^9}, {
+   3.921344541328662*^9, 3.9213445835171127`*^9}, {3.921344698324025*^9, 
+   3.921344715480012*^9}, {3.921344764603691*^9, 3.921344806244353*^9}, {
+   3.9213448443355803`*^9, 3.921344910353447*^9}, {3.9213449607045984`*^9, 
+   3.921345093780053*^9}, {3.9213455452640257`*^9, 3.921345619474801*^9}, 
+   3.922373879139861*^9},
+ CellLabel->"Out[24]=",ExpressionUUID->"6434668e-9413-4d1c-8d75-649ac8ed3801"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1904, 1007},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.75 Inherited,
+FrontEndVersion->"12.3 for Microsoft Windows (64-bit) (July 9, 2021)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"41c604eb-8d46-4cf4-bcdb-cdbfdf09d3e3"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 175, 3, 171, "Title",ExpressionUUID->"d004e843-3e58-4f28-8474-82a76376bcb6"],
+Cell[758, 27, 178, 3, 93, "Subtitle",ExpressionUUID->"bed3d987-7da0-459b-8f12-b5b268edd2f6"],
+Cell[939, 32, 167, 3, 54, "Subsubtitle",ExpressionUUID->"dbdf85ae-1bce-46ce-8d92-14f1c73182fc"],
+Cell[CellGroupData[{
+Cell[1131, 39, 158, 3, 118, "Section",ExpressionUUID->"ac1713ba-090e-4670-9695-94b817a7ada4"],
+Cell[1292, 44, 2807, 67, 177, "Text",ExpressionUUID->"b1e3d151-c5f1-46a7-b327-0f52292cfdca"],
+Cell[CellGroupData[{
+Cell[4124, 115, 430, 10, 53, "Input",ExpressionUUID->"3d8c8bb1-9e59-4cd1-b6fb-6102b005675c"],
+Cell[4557, 127, 261, 6, 59, "Output",ExpressionUUID->"e2736119-25ea-456c-800c-80c16a68c6ef"]
+}, Open  ]],
+Cell[4833, 136, 2110, 50, 136, "Text",ExpressionUUID->"d060127e-f2fa-41ad-83e5-3bcb295c25af"],
+Cell[CellGroupData[{
+Cell[6968, 190, 692, 14, 52, "Input",ExpressionUUID->"29b47f3f-780e-49ea-97b0-ee4ac24b61b6"],
+Cell[7663, 206, 716, 18, 64, "Output",ExpressionUUID->"e40019a5-a798-4156-8205-7b8281d82f05"]
+}, Open  ]],
+Cell[8394, 227, 1166, 22, 132, "Text",ExpressionUUID->"97e4639b-430d-4c0c-b489-80da4f67b2fa"],
+Cell[CellGroupData[{
+Cell[9585, 253, 1257, 34, 221, "Input",ExpressionUUID->"75aa0394-5782-4d02-b789-c481557b6276"],
+Cell[10845, 289, 1888, 39, 572, "Output",ExpressionUUID->"bb95169d-feda-4604-97f3-de187d8d07b3"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12782, 334, 190, 3, 118, "Section",ExpressionUUID->"85770f4c-f877-4a76-8c6e-17f396011b2e"],
+Cell[12975, 339, 2264, 52, 134, "Text",ExpressionUUID->"d70a93d1-92e7-4988-9989-102eae4d91d6"],
+Cell[15242, 393, 8735, 219, 762, "Input",ExpressionUUID->"41fa18e8-c50f-4cda-ad08-6a206e8ffa90"],
+Cell[23980, 614, 1176, 22, 92, "Text",ExpressionUUID->"1b69546e-f73c-48c5-a99b-86d1369ecb05"],
+Cell[CellGroupData[{
+Cell[25181, 640, 363, 8, 50, "Input",ExpressionUUID->"30cc6e5c-8a0a-438c-9c2d-31346123af05"],
+Cell[25547, 650, 2002, 39, 692, "Output",ExpressionUUID->"6434668e-9413-4d1c-8d75-649ac8ed3801"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
